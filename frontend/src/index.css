@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --color-bg: 247 248 252;
+  --color-surface: 255 255 255;
+  --color-elevated: 255 255 255;
+  --color-brand: 93 63 224;
+  --color-success: 22 163 74;
+  --color-warning: 217 119 6;
+  --color-danger: 220 38 38;
+  --color-text-primary: 20 20 31;
+  --color-text-secondary: 91 92 111;
+  --color-text-muted: 139 140 157;
+  --color-line: 221 224 232;
+  --color-subtle: 244 245 249;
+}
+
+.dark {
+  color-scheme: dark;
+  --color-bg: 9 9 15;
+  --color-surface: 17 17 24;
+  --color-elevated: 24 24 31;
+  --color-brand: 123 97 255;
+  --color-success: 34 197 94;
+  --color-warning: 245 158 11;
+  --color-danger: 239 68 68;
+  --color-text-primary: 242 242 255;
+  --color-text-secondary: 139 139 160;
+  --color-text-muted: 68 68 90;
+  --color-line: 255 255 255;
+  --color-subtle: 255 255 255;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: rgb(var(--color-bg));
+  color: rgb(var(--color-text-primary));
+  font-family: Inter, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #35343b;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #484555;
+}
+
+@layer components {
+  .glass-card {
+    @apply rounded-2xl border border-line/80 bg-bg-elevated;
+  }
+
+  .input-deep-focus {
+    @apply rounded-lg border border-line/80 bg-bg-elevated px-4 py-3 text-text-primary transition outline-none placeholder:text-text-muted focus:border-brand focus:shadow-input;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-brand px-4 py-3 font-medium text-[#F2F2FF] transition hover:-translate-y-0.5 hover:shadow-glow disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0 disabled:hover:shadow-none;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-line/80 px-4 py-3 font-medium text-text-primary transition hover:bg-subtle/80 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .chip {
+    @apply rounded-full border border-brand/20 bg-brand/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.04em] text-brand;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.shimmer::after {
+  animation: shimmer 1.4s infinite;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+  content: "";
+  inset: 0;
+  position: absolute;
+}

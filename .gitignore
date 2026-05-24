@@ -1,0 +1,11 @@
+.env
+*.pyc
+__pycache__/
+db.sqlite3
+media/
+staticfiles/
+node_modules/
+dist/
+.vite/
+.DS_Store
+_stitch_design/
